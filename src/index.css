@@ -42,3 +42,19 @@ figure:hover {
     1px 1px 0 rgb(4 120 87);
     
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e7eb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #047857;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #064e3b;
+}
