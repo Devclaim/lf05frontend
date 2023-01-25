@@ -4,6 +4,7 @@ import Akkordeon from "./Akkordeon";
 import Section from "./Section";
 import InfoBox from "./InfoBox";
 import RezeptForm from "./RezeptForm";
+import ZutatForm from "./ZutatForm";
 
 export default function MainBody() {
     return(
@@ -17,11 +18,10 @@ export default function MainBody() {
             <div className="[SQL STATEMENTS] grid lg:grid-cols-2 gap-6 px-6 lg:px-12 min-h-[150vh]">
                 <div className="flex flex-col gap-6">
                     <KundenForm></KundenForm>
-                    <RezeptForm></RezeptForm>
+                    <ZutatForm></ZutatForm>
                 </div>
                 <div className="flex flex-col gap-6">
-                    <RezeptForm></RezeptForm>
-                    <KundenForm></KundenForm>
+                    <RezeptForm></RezeptForm>   
                 </div>
             </div>
         </div>
