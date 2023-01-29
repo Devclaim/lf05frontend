@@ -1,16 +1,12 @@
-# Starting this App
+# LF05Frontend (Kilian S. / Hakon T. / Burhan K.)
 
-### Open terminal in File directory
+## Datenbank Frontend starten
 
-### Use the commans
-### `npm start`
-### Make sure LF05Backend is running 
+1. Terminal im Ordner-Pfad öffnen
+2.  `npm start`
+3. [http://localhost:3000](http://localhost:3000) im Browser öffnen
+
+## Die Frontend-Anfragen auf die DB funktionieren nur mit dem Backend
 
 ### Backend:
 https://github.com/Devclaim/lf05backend
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
