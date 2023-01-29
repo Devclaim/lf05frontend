@@ -1,9 +1,7 @@
 
 export async function GetKundenAll() {
     try {
-        const response = await fetch('http://localhost:8081/kunden/all', {
-            mode: 'no-cors'
-        });
+        const response = await fetch('kunden/all');
         return await response.json();
      } catch (error) {
         return false;
