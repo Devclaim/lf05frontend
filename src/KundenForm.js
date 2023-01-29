@@ -101,9 +101,9 @@ export default function KundenForm() {
                             <p>Tel.: <span className="text-black">{kunde.telefon}</span></p>
                             <p>AdressID: <span className="text-black">{kunde.adressid}</span></p>
                             <div className="w-full pt-2 mt-2 border-t border-emerald-700">
-                                <h3 className="text-center text-base font-bold"> {<div><b>DELETE FROM</b> <span className="text-black"> BESTELLUNGSKUNDE</span> <b>WHERE</b> <span className="text-black">BESTELLUNGSKUNDE.KUNDENNR={kunde.kundennr} </span> </div>} </h3>
                                 <h3 className="text-center text-base font-bold"> {<div><b>DELETE FROM</b> <span className="text-black"> KUNDE</span> <b>WHERE</b> <span className="text-black">KUNDE.KUNDENNR={kunde.kundennr} </span> </div>} </h3>
-                                <h3 className="text-center text-base font-bold"> {<div><b>DELETE FROM</b> <span className="text-black"> ADRESSE</span> <b>WHERE</b> <span className="text-black">ADRESSE.ADRESSID=</span> ( <b>WHERE</b> <span className="text-black">KUNDE.ADRESSID</span> <b>FROM</b> <span className="text-black">KUNDE</span> <b>WHERE</b> <span className="text-black">KUNDE.KUNDENNR={kunde.kundennr}</span> ) </div>} </h3>
+                                <h3 className="text-center text-base font-bold">( <b>BESTELLUNGSKUNDE</b> <span className="text-black">wird durch</span> <b>DELETE ON CASCADE</b> <span className="text-black">entfernt.</span>)</h3>
+                                <h3 className="text-center text-base font-bold">(<b> ADRESSE </b> <span className="text-black">wird durch</span> <b>CREATE TRIGGER</b> <span className="text-black">entfernt.</span>)</h3> 
                                 <Button id={kunde.kundennr.toString()} onClick={delKundeBtn} red={true} text="DELETE CUSTOMER"></Button>
                             </div>
                         </div>
