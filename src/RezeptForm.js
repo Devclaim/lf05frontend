@@ -188,7 +188,7 @@ export default function RezeptForm(props) {
                     <Button onClick={allRecipesBtn} text="GET ALL RECIPES"></Button>
                 </div>
                 <form onSubmit={formHandler2} className="justify-center flex flex-col w-full gap-2">
-                    <h3 className="text-center text-base font-bold"> <b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> REZEPT</span> <b>WHERE</b> <span className="text-black"> REZEPT.REZEPTNR={input2}</span> </h3>
+                    {props.sqlHidden ? <h3 className="text-center text-base font-bold"> <b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> REZEPT</span> <b>WHERE</b> <span className="text-black"> REZEPT.REZEPTNR={input2}</span> </h3> : ""}
                     <input
                         onChange={onChangeHandler2}
                         className={["text-emerald-700 placeholder:italic font-semibold py-2 px-4 rounded-2xl bg-transparent ",
