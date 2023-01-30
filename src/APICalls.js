@@ -106,3 +106,56 @@ export async function GetZutatenAll() {
         return false;
      }
 }
+export async function GetZutatenUnused() {
+    try {
+        const response = await fetch('zutaten/unused');
+        return await response.json();
+     } catch (error) {
+        return false;
+     }
+}
+
+export async function GetZutatenAllCo2() {
+    try {
+        const response = await fetch('zutaten/co2');
+        return await response.json();
+     } catch (error) {
+        return false;
+     }
+}
+
+export async function GetZutatenByRezeptNr(rezeptnr) {
+    try {
+        const response = await fetch(`zutaten/?rezeptnr=${rezeptnr}`);
+        return await response.json();
+     } catch (error) {
+        return false;
+     }
+}
+
+export async function GetZutatenByRezeptName(rezeptname) {
+    try {
+        const response = await fetch(`zutaten/byrezept/?rezeptname=${rezeptname}`);
+        return await response.json();
+     } catch (error) {
+        return false;
+     }
+}
+
+export async function GetBestellungskundeAll() {
+    try {
+        const response = await fetch(`bestellungskunden/all`);
+        return await response.json();
+     } catch (error) {
+        return false;
+     }
+}
+
+export async function GetNahrwerteByKundennr(kundennr) {
+    try {
+        const response = await fetch(`bestellungskunden/naehrwert/?kundennr=${kundennr}`);
+        return await response.json();
+     } catch (error) {
+        return false;
+     }
+}

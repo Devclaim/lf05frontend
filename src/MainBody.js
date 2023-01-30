@@ -5,6 +5,7 @@ import Section from "./Section";
 import InfoBox from "./InfoBox";
 import RezeptForm from "./RezeptForm";
 import ZutatForm from "./ZutatForm";
+import BestellungskundeForm from "./BestellungskundeForm";
 
 export default function MainBody() {
     const [sqlHidden , setSqlHidden] = React.useState(false);
@@ -31,7 +32,8 @@ export default function MainBody() {
                     <ZutatForm sqlHidden={sqlHidden}></ZutatForm>
                 </div>
                 <div className="flex flex-col gap-6">
-                    <RezeptForm sqlHidden={sqlHidden}></RezeptForm>   
+                    <RezeptForm sqlHidden={sqlHidden}></RezeptForm>
+                    <BestellungskundeForm sqlHidden={sqlHidden}></BestellungskundeForm>  
                 </div>
             </div>
         </div>

@@ -234,7 +234,7 @@ export default function RezeptForm(props) {
                         " hover:bg-emerald-700 hover:text-white outline-none border-emerald-700 text-xl transition-all duration-500 border w-full text-center"]} 
                         value={input4}
                     >
-                        <option className="text-emerald-700 bg-white" selected> Select Category </option>
+                        <option className="text-emerald-700 bg-white" defaultValue> Select Category </option>
                         <option className="text-emerald-700 bg-white" value="Halal"> Halal </option>
                         <option className="text-emerald-700 bg-white" value="Vegan"> Vegan </option>
                         <option className="text-emerald-700 bg-white" value="Vegetarisch"> Vegetarisch </option>
@@ -251,7 +251,7 @@ export default function RezeptForm(props) {
                             " hover:bg-emerald-700 hover:text-white outline-none border-emerald-700 text-xl transition-all duration-500 border w-full text-center"]} 
                             value={input5}
                         >
-                            <option className="text-emerald-700 bg-white" selected> Select Category </option>
+                            <option className="text-emerald-700 bg-white" defaultValue> Select Category </option>
                             <option className="text-emerald-700 bg-white" value="Halal"> Halal </option>
                             <option className="text-emerald-700 bg-white" value="Vegan"> Vegan </option>
                             <option className="text-emerald-700 bg-white" value="Vegetarisch"> Vegetarisch </option>
