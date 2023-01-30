@@ -12,8 +12,7 @@
 ### Backend:
 https://github.com/Devclaim/lf05backend
 
-### Dependencies
-## Node.js and npm
-`https://nodejs.org/en/download/`
-or
-`npm install -g npm`
+## Dependencies
+### Node.js and npm
+`npm install -g npm` or https://nodejs.org/en/download/
+
