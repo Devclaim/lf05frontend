@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import { GetKunde, GetKundenAll, DeleteKunde , GetKundePlz } from "./APICalls";
 
-export default function KundenForm() {
+export default function KundenForm(props) {
     const [output, setOutput] = React.useState([]);
     const [error, setError] = React.useState(false);
     const [error2, setError2] = React.useState(false);
@@ -93,11 +93,11 @@ export default function KundenForm() {
             </button>
             <div className={`${showBox ? "" : "scale-y-0 opacity-0"} max-h-[4000px] overflow-y-auto bg-gray-200 w-full flex flex-col gap-6 p-6 rounded-b-2xl transition-all duration-300 ease-out origin-top`}>
                 <div className="w-full">
-                    <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> KUNDE</span> </div>} </h3>
+                    {props.sqlHidden ? <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> KUNDE</span> </div>} </h3> : ""}
                     <Button onClick={allCustomerBtn} text="GET ALL CUSTOMERS"></Button>
                 </div>
                 <form onSubmit={formHandler} className="justify-center flex flex-col w-full gap-2">
-                    <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> KUNDE</span> <b>WHERE</b> <span className="text-black">KUNDE.KUNDENNR={input}</span></div>} </h3>
+                    {props.sqlHidden ? <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> KUNDE</span> <b>WHERE</b> <span className="text-black">KUNDE.KUNDENNR={input}</span></div>} </h3> : ""}
                     <input
                         onChange={onChangeHandler}
                         className={["text-emerald-700 placeholder:italic font-semibold py-2 px-4 rounded-2xl bg-transparent ",
@@ -110,7 +110,7 @@ export default function KundenForm() {
                     {error ? <p className="text-rose-700 text-xl text-center"> Invalid Customer ID</p> : ""}
                 </form>
                 <form onSubmit={formHandler2} className="justify-center flex flex-col w-full gap-2">
-                    <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black">*</span> <b>FROM</b> <span className="text-black"> KUNDE</span> <b>JOIN</b> <span className="text-black">ADRESSE</span> <b>{"ON ("}</b> <span className="text-black">KUNDE.ADRESSID = ADRESSE.ADRESSID</span> <b>{") LEFT JOIN"}</b> <span className="text-black">REGION</span> <b>{"ON ("}</b> <span className="text-black">ADRESSE.REGIONID = REGION.REGIONID</span> <b>{") WHERE"}</b> <span className="text-black">REGION.PLZ={input2}</span></div>} </h3>
+                    {props.sqlHidden ? <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black">*</span> <b>FROM</b> <span className="text-black"> KUNDE</span> <b>JOIN</b> <span className="text-black">ADRESSE</span> <b>{"ON ("}</b> <span className="text-black">KUNDE.ADRESSID = ADRESSE.ADRESSID</span> <b>{") LEFT JOIN"}</b> <span className="text-black">REGION</span> <b>{"ON ("}</b> <span className="text-black">ADRESSE.REGIONID = REGION.REGIONID</span> <b>{") WHERE"}</b> <span className="text-black">REGION.PLZ={input2}</span></div>} </h3> : ""}
                     <input
                         onChange={onChangeHandler2}
                         className={["text-emerald-700 placeholder:italic font-semibold py-2 px-4 rounded-2xl bg-transparent ",

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import { GetZutatenAll } from "./APICalls";
 
-export default function ZutatForm() {
+export default function ZutatForm(props) {
     const [output, setOutput] = React.useState([]);
     const [showBox, setShowBox] = React.useState(true);
     const [loading, setLoading] = React.useState(false);
@@ -36,7 +36,7 @@ export default function ZutatForm() {
             </button>
             <div className={`${showBox ? "" : "scale-y-0 opacity-0"} max-h-[4000px] overflow-y-auto bg-gray-200 w-full flex flex-col gap-6 p-6 rounded-b-2xl items-center transition-all duration-300 ease-out origin-top`}>
                 <div className="w-full">
-                    <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> ZUTAT</span> </div>} </h3>
+                {props.sqlHidden ? <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> ZUTAT</span> </div>} </h3> : ""}
                     <Button onClick={allZutatenBtn} text="GET ALL INGREDIENTS"></Button>
                 </div>
                 <div className="w-full text-2xl flex flex-col gap-2 text-emerald-700 text-center font-bold">
