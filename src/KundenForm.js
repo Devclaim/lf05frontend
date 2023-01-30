@@ -1,17 +1,23 @@
 import React from "react";
 import Button from "./Button";
-import { GetKunde, GetKundenAll, DeleteKunde } from "./APICalls";
+import { GetKunde, GetKundenAll, DeleteKunde , GetKundePlz } from "./APICalls";
 
 export default function KundenForm() {
     const [output, setOutput] = React.useState([]);
     const [error, setError] = React.useState(false);
+    const [error2, setError2] = React.useState(false);
     const [input, setInput] = React.useState("");
+    const [input2, setInput2] = React.useState("");
     const [showBox, setShowBox] = React.useState(true);
     const [loading, setLoading] = React.useState(false);
     const [outputTime, setOutputTime] = React.useState("");
 
     const onChangeHandler = (e) => {
         setInput(e.target.value)
+    }
+
+    const onChangeHandler2 = (e) => {
+        setInput2(e.target.value)
     }
 
     const formHandler = async (e)  => {
@@ -30,6 +36,24 @@ export default function KundenForm() {
             setOutput([data]);
         }
         setInput("");
+    }
+
+    const formHandler2 = async (e)  => {
+        var start = Date.now();
+        setError2(false)
+        setLoading(true)
+        e.preventDefault()
+        let data = await GetKundePlz(input2)
+        var end = Date.now();
+        setOutputTime("[Fetched result in " + (end-start).toString() + " ms]");
+        setLoading(false)
+        if(!data)
+        {
+            setError2(true);
+        } else {
+            setOutput(data);
+        }
+        setInput2("");
     }
 
     const allCustomerBtn = async () => {
@@ -68,6 +92,10 @@ export default function KundenForm() {
                 <h3 className="w-full text-3xl font-bold text-center text-white p-6"> GET CUSTOMERS </h3>
             </button>
             <div className={`${showBox ? "" : "scale-y-0 opacity-0"} max-h-[4000px] overflow-y-auto bg-gray-200 w-full flex flex-col gap-6 p-6 rounded-b-2xl transition-all duration-300 ease-out origin-top`}>
+                <div className="w-full">
+                    <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> KUNDE</span> </div>} </h3>
+                    <Button onClick={allCustomerBtn} text="GET ALL CUSTOMERS"></Button>
+                </div>
                 <form onSubmit={formHandler} className="justify-center flex flex-col w-full gap-2">
                     <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> KUNDE</span> <b>WHERE</b> <span className="text-black">KUNDE.KUNDENNR={input}</span></div>} </h3>
                     <input
@@ -78,13 +106,22 @@ export default function KundenForm() {
                         value={input}
                     >    
                     </input>
-                    <Button text="GET CUSTOMER"></Button>
+                    <Button text="GET CUSTOMER BY ID"></Button>
                     {error ? <p className="text-rose-700 text-xl text-center"> Invalid Customer ID</p> : ""}
                 </form>
-                <div className="w-full">
-                    <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black"> *</span> <b>FROM</b> <span className="text-black"> KUNDE</span> </div>} </h3>
-                    <Button onClick={allCustomerBtn} text="GET ALL CUSTOMERS"></Button>
-                </div>
+                <form onSubmit={formHandler2} className="justify-center flex flex-col w-full gap-2">
+                    <h3 className="text-center text-base font-bold"> {<div><b>SELECT</b> <span className="text-black">*</span> <b>FROM</b> <span className="text-black"> KUNDE</span> <b>JOIN</b> <span className="text-black">ADRESSE</span> <b>{"ON ("}</b> <span className="text-black">KUNDE.ADRESSID = ADRESSE.ADRESSID</span> <b>{") LEFT JOIN"}</b> <span className="text-black">REGION</span> <b>{"ON ("}</b> <span className="text-black">ADRESSE.REGIONID = REGION.REGIONID</span> <b>{") WHERE"}</b> <span className="text-black">REGION.PLZ={input2}</span></div>} </h3>
+                    <input
+                        onChange={onChangeHandler2}
+                        className={["text-emerald-700 placeholder:italic font-semibold py-2 px-4 rounded-2xl bg-transparent ",
+                        " outline-none focus:border-emerald-700 border-gray-300 transition-all duration-500 border w-full text-center"]} 
+                        placeholder="Enter valid PLZ here..."
+                        value={input2}
+                    >    
+                    </input>
+                    <Button text="GET CUSTOMER BY PLZ"></Button>
+                    {error2 ? <p className="text-rose-700 text-xl text-center"> Invalid PLZ</p> : ""}
+                </form>
                 <div className="w-full text-2xl flex flex-col gap-2 text-emerald-700 text-center font-bold">
                     Output 
                     <span className="text-black text-lg">{outputTime}</span>
