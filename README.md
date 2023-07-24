@@ -4,8 +4,9 @@
 
 1.  Git Clone
 2.  Terminal im Ordner-Pfad öffnen
-3.  `npm start`
-4. [http://localhost:3000](http://localhost:3000) im Browser öffnen
+4.  `npm install`
+5.  `npm start`
+6. [http://localhost:3000](http://localhost:3000) im Browser öffnen
 
 ## Die Frontend-Anfragen auf die DB funktionieren nur mit dem Backend
 
